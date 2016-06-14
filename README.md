@@ -1,6 +1,6 @@
 # Paginator [![Build Status](https://travis-ci.org/LostKobrakai/Paginator.svg?branch=master)](https://travis-ci.org/LostKobrakai/Paginator)
 
-This is mostly meant to allow for multiple selectors to be paginated in processwire, but feel free to repurpose it to other use-cases.
+Paginate items from multiple sources. This is mostly meant to allow for multiple selectors to be paginated in processwire, but feel free to repurpose it to other use-cases.
 
 ```php
 include 'src/Paginator.php';
