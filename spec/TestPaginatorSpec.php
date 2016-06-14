@@ -7,9 +7,9 @@
  * limit: the max number of items on a page
  * result: the set resulting from the pagination "$numKey:$item"
  */
-describe('Paginator', function(){
+describe('TestPaginator', function(){
 	before(function(){
-		$this->paginator = new Paginator();
+		$this->paginator = new TestPaginator();
 	});
 
 	it('should return an empty set for a start value greater the total of input data', function(){

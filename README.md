@@ -16,4 +16,4 @@ $result = $paginator(array(
 
 **Disclaimer**
 
-Only the base class is currently tested :)
+Only the TestPaginator implementation is currently tested :)

@@ -1,7 +1,7 @@
 <?php
 
-class Paginator{
-	function __invoke($selectors, $pageNum, $limit){
+abstract class Paginator{
+	public function __invoke($selectors, $pageNum, $limit){
 		$pageNum -= 1; // Zero-based
 		$total = $this->getTotal($selectors);
 		$lastKeyOfAll = $this->getTotal($selectors) - 1; // Zero based
@@ -29,32 +29,13 @@ class Paginator{
 		return $storage;
 	}
 
-	public function getStorage($start, $limit, $total)
-	{
-		return [];
-	}
+	abstract protected function getStorage($start, $limit, $total);
 
-	function getTotal($selectors){
-		return array_sum($selectors);
-	}
+	abstract protected function getTotal($selectors);
 
-	function getNumberOfItemsForSelector($selector){
-		return $selector;
-	}
+	abstract protected function getNumberOfItemsForSelector($selector);
 
-	public function getItems($selector, $key, $start, $limit)
-	{
-		// Not more than selector does have or limit does allow
-		$set = range($start + 1, $start + min($limit, $selector - $start)); // Zero based
+	abstract protected function getItems($selector, $key, $start, $limit);
 
-		// This is mostly useful to the tests
-		return array_map(function($i) use($key) {
-			return "$key:$i";
-		}, $set);
-	}
-
-	public function addToStorage($storage, $items)
-	{
-		return array_merge($storage, $items);
-	}
+	abstract protected function addToStorage($storage, $items);
 }

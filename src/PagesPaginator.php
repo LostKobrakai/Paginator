@@ -1,8 +1,7 @@
 <?php
 
 class PagesPaginator extends Paginator{
-
-	public function getStorage($start, $limit, $total)
+	protected function getStorage($start, $limit, $total)
 	{
 		return (new PageArray())
 			->setStart($start)
@@ -10,20 +9,20 @@ class PagesPaginator extends Paginator{
 			->setTotal($total);
 	}
 
-	function getTotal($selectors){
+	protected function getTotal($selectors){
 		return wire('pages')->count('(' . implode('), (', $selectors) . ')');
 	}
 
-	function getNumberOfItemsForSelector($selector){
+	protected function getNumberOfItemsForSelector($selector){
 		return wire('pages')->count($selector);
 	}
 
-	public function getItems($selector, $key, $start, $limit)
+	protected function getItems($selector, $key, $start, $limit)
 	{
 		return wire('pages')->find($selector . ", start=$start, limit=$limit");
 	}
 
-	public function addToStorage($storage, $items)
+	protected function addToStorage($storage, $items)
 	{
 		return $storage->import($items);
 	}
