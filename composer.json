@@ -1,0 +1,15 @@
+{
+    "require-dev": {
+        "crysalead/kahlan": "^2.5"
+    },
+    "autoload": {
+    	"psr-4": {
+    		"": "src/"
+    	}
+    },
+    "autoload-dev": {
+    	"psr-4": {
+    		"": "spec/"
+    	}
+    }
+}
