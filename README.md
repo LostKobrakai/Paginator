@@ -1,4 +1,4 @@
-# Paginator
+# Paginator [![Build Status](https://travis-ci.org/LostKobrakai/Paginator.svg?branch=master)](https://travis-ci.org/LostKobrakai/Paginator)
 
 This is mostly meant to allow for multiple selectors to be paginated in processwire, but feel free to repurpose it to other use-cases.
 
