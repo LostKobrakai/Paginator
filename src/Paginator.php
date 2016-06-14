@@ -3,12 +3,13 @@
 class Paginator{
 	function __invoke($selectors, $pageNum, $limit){
 		$pageNum -= 1; // Zero-based
-		$lastKeyOfAll = $this->getLastKey($selectors); // Zero based
+		$total = $this->getTotal($selectors);
+		$lastKeyOfAll = $this->getTotal($selectors) - 1; // Zero based
 		$start = $pageNum * $limit;
 
 		if($start > $lastKeyOfAll) return [];
 
-		$storage = [];
+		$storage = $this->getStorage($start, $limit, $total);
 
 		foreach ($selectors as $key => $selector) {
 			$currentNumberOfIterms = $this->getNumberOfItemsForSelector($selector);
@@ -28,8 +29,13 @@ class Paginator{
 		return $storage;
 	}
 
-	function getLastKey($selectors){
-		return array_sum($selectors) - 1;
+	public function getStorage($start, $limit, $total)
+	{
+		return [];
+	}
+
+	function getTotal($selectors){
+		return array_sum($selectors);
 	}
 
 	function getNumberOfItemsForSelector($selector){

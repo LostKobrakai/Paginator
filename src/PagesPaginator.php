@@ -2,8 +2,16 @@
 
 class PagesPaginator extends Paginator{
 
-	function getLastKey($selectors){
-		return wire('pages')->count('(' . implode('), (', $selectors) . ')') - 1;
+	public function getStorage($start, $limit, $total)
+	{
+		return (new PageArray())
+			->setStart($start)
+			->setLimit($limit)
+			->setTotal($total);
+	}
+
+	function getTotal($selectors){
+		return wire('pages')->count('(' . implode('), (', $selectors) . ')');
 	}
 
 	function getNumberOfItemsForSelector($selector){
