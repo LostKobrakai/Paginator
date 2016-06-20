@@ -24,6 +24,7 @@ class PagesPaginator extends Paginator{
 
 	protected function addToStorage($storage, $items)
 	{
-		return $storage->import($items);
+		// $storage->import() would change the total value, which we already set to the pagearray
+		foreach($items as $item) $storage->add($item);
 	}
 }
