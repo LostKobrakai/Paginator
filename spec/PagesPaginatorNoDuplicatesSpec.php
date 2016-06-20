@@ -1,13 +1,13 @@
 <?php 
 
-describe('PagesPaginator', function(){
+describe('PagesPaginatorNoDuplicates', function(){
 	before(function(){
-		$this->paginator = new PagesPaginator();
+		$this->paginator = new PagesPaginatorNoDuplicates();
 	});
 
 	it('should be instantiatable', function(){
 		$instantiation = function(){
-			new PagesPaginator();
+			new PagesPaginatorNoDuplicates();
 		};
 		expect($instantiation)->not->toThrow();
 	});

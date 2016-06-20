@@ -14,7 +14,7 @@ class TestPaginator extends Paginator{
 		return $selector;
 	}
 
-	protected function getItems($selector, $key, $start, $limit)
+	protected function getItems($selector, $key, $start, $limit, $storage)
 	{
 		// Not more than selector does have or limit does allow
 		$set = range($start + 1, $start + min($limit, $selector - $start)); // Zero based

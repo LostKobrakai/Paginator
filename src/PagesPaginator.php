@@ -17,7 +17,7 @@ class PagesPaginator extends Paginator{
 		return wire('pages')->count($selector);
 	}
 
-	protected function getItems($selector, $key, $start, $limit)
+	protected function getItems($selector, $key, $start, $limit, $storage)
 	{
 		return wire('pages')->find($selector . ", start=$start, limit=$limit");
 	}

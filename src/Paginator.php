@@ -15,7 +15,7 @@ abstract class Paginator{
 			$currentNumberOfIterms = $this->getNumberOfItemsForSelector($selector);
 
 			if($currentNumberOfIterms > $start){
-				$toBeStoredSet = $this->getItems($selector, $key, $start, $limit);
+				$toBeStoredSet = $this->getItems($selector, $key, $start, $limit, $storage);
 				$storage = $this->addToStorage($storage, $toBeStoredSet);
 				$start = 0; // All not needed 
 				$limit -= count($toBeStoredSet);
@@ -35,7 +35,7 @@ abstract class Paginator{
 
 	abstract protected function getNumberOfItemsForSelector($selector);
 
-	abstract protected function getItems($selector, $key, $start, $limit);
+	abstract protected function getItems($selector, $key, $start, $limit, $storage);
 
 	abstract protected function addToStorage($storage, $items);
 }
