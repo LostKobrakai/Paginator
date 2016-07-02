@@ -71,6 +71,16 @@ describe('TestPaginator', function(){
 			'result' => ['1:1']
 		);
 
+		$sets[] = array(
+			'nums' => [
+				1 => 3,
+				2 => 2
+			],
+			'pageNum' => 2,
+			'limit' => 3,
+			'result' => ['2:1', '2:2']
+		);
+
 		
 		foreach ($sets as $set) {
 			$result = $this->paginator($set['nums'], $set['pageNum'], $set['limit']);
