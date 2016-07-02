@@ -10,7 +10,8 @@ class PagesPaginator extends Paginator{
 	}
 
 	protected function getTotal($selectors){
-		return wire('pages')->count('(' . implode('), (', $selectors) . ')');
+		// Does currently not support selectors with or-groups in it
+		return wire('pages')->count('(id=[' . implode(']), (id=[', $selectors) . '])');
 	}
 
 	protected function getNumberOfItemsForSelector($selector){
@@ -24,7 +25,11 @@ class PagesPaginator extends Paginator{
 
 	protected function addToStorage($storage, $items)
 	{
-		// $storage->import() would change the total value, which we already set to the pagearray
-		foreach($items as $item) $storage->add($item);
+		// Keep set total untouched
+		$total = $storage->getTotal();
+		$storage->import($items);
+		$storage->setTotal($total);
+
+		return $storage;
 	}
 }
